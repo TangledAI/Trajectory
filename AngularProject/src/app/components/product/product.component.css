@@ -3,9 +3,20 @@
 }
 .prodImg {
     width:100%;
-    height: 100%;
+    height: 80%;
 }
 .prodImg1 {
     width: 110px;
     height: 120px;
+}
+.icons{
+    font-size: 20px;
+    padding: 5px;
+    color: #0056b3;
+}
+.prodDesc{
+    font-size: 12px;
+    font-weight: 400;
+    color: #a1a0a0;
+    font-family: Cabin, Georgia, serif;
 }
