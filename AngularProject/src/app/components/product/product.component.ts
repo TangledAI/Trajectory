@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,  ViewChild, ElementRef } from '@angular/core';
 
 @Component({
   selector: 'app-product',
@@ -6,10 +6,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./product.component.css']
 })
 export class ProductComponent implements OnInit {
-
+@ViewChild("videoPlayer", { static: false }) videoplayer: ElementRef;
   constructor() { }
 
   ngOnInit() {
+  }
+  toggleVideo(event: any) {
+    this.videoplayer.nativeElement.play();
   }
 
 }

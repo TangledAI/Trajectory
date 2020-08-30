@@ -3,11 +3,11 @@
 }
 .prodImg {
     width:100%;
-    height: 80%;
+    /* height: 80%; */
 }
 .prodImg1 {
-    width: 110px;
-    height: 120px;
+    width: 100%;
+    /* height: 120px; */
 }
 .icons{
     font-size: 20px;
