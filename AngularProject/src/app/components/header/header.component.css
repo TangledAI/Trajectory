@@ -8,17 +8,17 @@
 }
 .bgColor{
     background-color: #5a4fcf!important;
-    border-radius: 10px;
+    /* border-radius: 10px; */
 }
 .hpad{
-    padding: 30px;
+    padding: 25px;
 }
 .htitle{
-    font-size: 40px;
+    font-size: 33px;
     font-weight: 500;
 }
 .htitle1{
-    font-size: 20px;
+    font-size: 18px;
     font-family: Cabin, Georgia, serif;
     color: #fff;
 

@@ -1,0 +1,12 @@
+.example-full-width {
+    width: 75%;
+  }
+  .floatLeft{
+      float: left;
+  }
+  .floatRight {
+      float: right;
+  }
+  .input_fileupload--hidden{
+    display:none;
+  }
