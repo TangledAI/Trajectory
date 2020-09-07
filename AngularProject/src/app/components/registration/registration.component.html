@@ -247,10 +247,11 @@
             </div>
             <div class="row">
                     <div class="col-md-12">
+                        Video upload : 
                           <button mat-raised-button color="primary" (click)="onClick($event)">   
                                 <mat-icon>add</mat-icon> Choose
                           </button>
-                        <input #fileUpload type="file"  class="input_fileupload--hidden" (input)="onInput($event)" formControlName="videoUpload" 
+                        <input #fileUpload type="file"  multiple class="input_fileupload--hidden" (input)="onInput($event)" formControlName="videoUpload" 
                         [(ngModel)]="inputFileName" [accept]="accept"(change)="onVideoChange($event)">
 
                         <div *ngFor="let f of files">
@@ -328,7 +329,7 @@
                         <div class="row">
                                 <div class="col-md-12">
                                     <button class="floatLeft" mat-raised-button color="primary" matStepperPrevious>Previous</button>
-                                    <button class="floatRight" mat-raised-button color="primary" >Save</button>
+                                    <button class="floatRight" mat-raised-button color="primary" (click)="registrationSubmit(productForm);">Save</button>
                                 </div>
                             </div>
             </div>

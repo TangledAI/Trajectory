@@ -9,7 +9,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 })
 export class RegistrationComponent implements OnInit {
   isLinear = true;
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private sanitizer: DomSanitizer) { }
   productForm: FormGroup;
   @Input()
   mode
@@ -64,7 +64,7 @@ export class RegistrationComponent implements OnInit {
   @Input()
   showUploadInfo
 
-  @ViewChild('fileUpload')
+  @ViewChild('fileUpload', {static: true})
   fileUpload: ElementRef
 
   inputFileName: string
@@ -128,7 +128,25 @@ export class RegistrationComponent implements OnInit {
 
   }
   onVideoChange(event){
-    console.log("------ onVideoChange --------");
+    let files = event.dataTransfer ? event.dataTransfer.files : event.target.files;
+    console.log('event::::::', event)
+    for (let i = 0; i < files.length; i++) {
+      let file = files[i];
+
+      //if(!this.isFileSelected(file)){
+      if (this.validate(file)) {
+        //      if(this.isImage(file)) {
+        file.objectURL = this.sanitizer.bypassSecurityTrustUrl((window.URL.createObjectURL(files[i])));
+        //      }
+        // if (!this.isMultiple()) {
+        //   this.files = []
+        // }
+        this.files.push(files[i]);
+        //  }
+      }
+      //}
+    }
+    console
   }
   onClick(event){
     if (this.fileUpload)
@@ -166,5 +184,7 @@ export class RegistrationComponent implements OnInit {
     return this.multiple
   }
   
-
+  registrationSubmit(details){
+    console.log(" registration forms -------- ", JSON.stringify(details.value));
+  }
 }
