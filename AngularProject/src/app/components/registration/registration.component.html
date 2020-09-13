@@ -1,146 +1,105 @@
-<form [formGroup]="productForm">
+
     <mat-horizontal-stepper [linear]="isLinear" #stepper="matHorizontalStepper">
-        <mat-step [stepControl]="firstFormGroup">
-            <ng-template matStepLabel>Login</ng-template>
-            <div formGroupName="login">
-                <div class="row">
-                    <div class="col-md-12">
-                        <mat-form-field appearance="outline" class="example-full-width">
-                            <mat-label>Primary Email</mat-label>
-                            <input matInput formControlName="emailPrimary" />
-                        </mat-form-field>
+            <mat-step [stepControl]="firstFormGroup" [editable]="isEditable"  [completed]="false">
+                    <form [formGroup]="loginForm">
+                <ng-template matStepLabel>Login</ng-template>
+                <!-- <div formGroupName="login"> -->
+                     <div class="row">
+                        <div class="col-md-12">
+                            <mat-form-field appearance="outline" class="example-full-width">
+                                <mat-label>Primary Email</mat-label>
+                                <input matInput formControlName="emailPrimary" required/>
+                            </mat-form-field>
+                        </div>
                     </div>
-                </div>
-                <div class="row">
-                <div class="col-md-12">
-                    <mat-form-field appearance="outline" class="example-full-width">
-                        <mat-label>Password</mat-label>
-                        <input matInput formControlName="password" [type]="'password'" />
-                    </mat-form-field>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <mat-form-field appearance="outline" class="example-full-width">
-                        <mat-label>Confirm Password</mat-label>
-                        <input matInput formControlName="password" [type]="'password'" />
-                    </mat-form-field>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <mat-form-field appearance="outline" class="example-full-width">
-                        <mat-label>Secondary email</mat-label>
-                        <input matInput formControlName="secondaryEmail" />
-                    </mat-form-field>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <mat-form-field appearance="outline" class="example-full-width">
-                        <mat-label>Phone number</mat-label>
-                        <input matInput formControlName="phoneNumber" />
-                    </mat-form-field>
-                </div>
-
-            </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <mat-form-field appearance="outline" class="example-full-width">
-                        <mat-label>Product url</mat-label>
-                        <input matInput formControlName="productUrl" />
-                    </mat-form-field>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <mat-form-field appearance="outline" class="example-full-width">
-                        <mat-label>Address</mat-label>
-                        <input matInput formControlName="contactPhysicalAddress" />
-                    </mat-form-field>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12">
-
-                    <button class="floatRight" mat-raised-button color="primary" matStepperNext>Next</button>
-                </div>
-            </div>
-            </div>
-        </mat-step>
-        <mat-step [stepControl]="secondFormGroup">
-            <ng-template matStepLabel>Products</ng-template>
-            <mat-form-field class="example-full-width"  appearance="outline" >
-                <mat-label>Select</mat-label>
-                <mat-select formControlName="type" [(ngModel)]="type" (onChange)="selectType();">
-                    <mat-option value="product">Product</mat-option>
-                    <mat-option value="company">Company</mat-option>
-                    <mat-option value="community">Community</mat-option>
-                </mat-select>
-            </mat-form-field>
-            <!-- for product details -->
-            <div formGroupName="product" *ngIf="type == 'product'">
-                <div class="row">
+                    <div class="row">
                     <div class="col-md-12">
-                        <mat-form-field appearance="outline" class="example-full-width">
-                            <mat-label>Product name</mat-label>
-                            <input matInput formControlName="productName" />
-                        </mat-form-field>
-                    </div>
-                    <div class="col-md-12">
-                        <mat-form-field appearance="outline" class="example-full-width">
-                            <mat-label>Product alias</mat-label>
-                            <input matInput formControlName="productAlias" />
-                        </mat-form-field>
-                    </div>
-                    <div class="col-md-12">
-                        <mat-form-field appearance="outline" class="example-full-width">
-                            <mat-label>Product short name</mat-label>
-                            <input matInput formControlName="productShortName" />
+                         <mat-form-field appearance="outline" class="example-full-width">
+                            <mat-label>Password</mat-label>
+                            <input matInput formControlName="password" [type]="'password'" required/>
                         </mat-form-field>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-12">
                         <mat-form-field appearance="outline" class="example-full-width">
-                            <mat-label>Tagline</mat-label>
-                            <input matInput formControlName="productTagLine" />
-                        </mat-form-field>
-                    </div>
-                    <div class="col-md-12">
-                        <mat-form-field appearance="outline" class="example-full-width">
-                            <mat-label>Description Long</mat-label>
-                            <input matInput formControlName="productDescriptionShort" />
-                        </mat-form-field>
-                    </div>
-                    <div class="col-md-12">
-                        <mat-form-field appearance="outline" class="example-full-width">
-                            <mat-label>Description short</mat-label>
-                            <input matInput formControlName="productDescriptionLong" />
+                            <mat-label>Confirm Password</mat-label>
+                            <input matInput formControlName="confirmPassword" [type]="'password'" required/>
                         </mat-form-field>
                     </div>
                 </div>
-            </div>
-             <!-- end product details -->
-             <!-- for company details -->
-             <div formGroupName="company" *ngIf="type == 'company'">
+                <div class="row">
+                    <div class="col-md-12">
+                        <mat-form-field appearance="outline" class="example-full-width">
+                            <mat-label>Secondary email</mat-label>
+                            <input matInput formControlName="secondaryEmail" />
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <mat-form-field appearance="outline" class="example-full-width">
+                            <mat-label>Phone number</mat-label>
+                            <input matInput formControlName="phoneNumber" />
+                        </mat-form-field>
+                    </div>
+    
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <mat-form-field appearance="outline" class="example-full-width">
+                            <mat-label>Product url</mat-label>
+                            <input matInput formControlName="productUrl"/>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <mat-form-field appearance="outline" class="example-full-width">
+                            <mat-label>Address</mat-label>
+                            <input matInput formControlName="contactPhysicalAddress" />
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+      <button class="floatRight" mat-raised-button color="primary" matStepperNext [disabled]="!loginForm.valid " (click)="loginCall();">Next</button>
+                    </div>
+                </div>
+                 </form>
+                
+            </mat-step>
+            <!-- <form [formGroup]="productForm"> -->
+            <mat-step [stepControl]="secondFormGroup" [completed]="false">
+                <ng-template matStepLabel>Products</ng-template>
+                <form [formGroup]="productForm">
+                <mat-form-field class="example-full-width"  appearance="outline" >
+                    <mat-label>Select</mat-label>
+                    <mat-select formControlName="type" [(ngModel)]="type" (onChange)="selectType();" required>
+                        <mat-option value="product">Product</mat-option>
+                        <mat-option value="company">Company</mat-option>
+                        <mat-option value="community">Community</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <!-- for product details -->
+                <div formGroupName="product" *ngIf="type == 'product'">
                     <div class="row">
                         <div class="col-md-12">
                             <mat-form-field appearance="outline" class="example-full-width">
-                                <mat-label>Company name</mat-label>
-                                <input matInput formControlName="companyName" />
+                                <mat-label>Product name</mat-label>
+                                <input matInput formControlName="productName" required/>
                             </mat-form-field>
                         </div>
                         <div class="col-md-12">
                             <mat-form-field appearance="outline" class="example-full-width">
-                                <mat-label>Company alias</mat-label>
-                                <input matInput formControlName="companyAlias" />
+                                <mat-label>Product alias</mat-label>
+                                <input matInput formControlName="productAlias" required/>
                             </mat-form-field>
                         </div>
                         <div class="col-md-12">
                             <mat-form-field appearance="outline" class="example-full-width">
-                                <mat-label>Company short name</mat-label>
-                                <input matInput formControlName="companyShortName" />
+                                <mat-label>Product short name</mat-label>
+                                <input matInput formControlName="productShortName" required/>
                             </mat-form-field>
                         </div>
                     </div>
@@ -148,191 +107,248 @@
                         <div class="col-md-12">
                             <mat-form-field appearance="outline" class="example-full-width">
                                 <mat-label>Tagline</mat-label>
-                                <input matInput formControlName="companyTagLine" />
+                                <input matInput formControlName="productTagLine" />
                             </mat-form-field>
                         </div>
                         <div class="col-md-12">
                             <mat-form-field appearance="outline" class="example-full-width">
                                 <mat-label>Description Long</mat-label>
-                                <input matInput formControlName="companyDescriptionShort" />
+                                <input matInput formControlName="productDescriptionShort" />
                             </mat-form-field>
                         </div>
                         <div class="col-md-12">
                             <mat-form-field appearance="outline" class="example-full-width">
                                 <mat-label>Description short</mat-label>
-                                <input matInput formControlName="companyDescriptionLong" />
+                                <input matInput formControlName="productDescriptionLong" />
                             </mat-form-field>
                         </div>
                     </div>
                 </div>
-             <!-- end company details -->
-             <!-- for community details -->
-             <div formGroupName="community" *ngIf="type == 'community'">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <mat-form-field appearance="outline" class="example-full-width">
-                                <mat-label>Community name</mat-label>
-                                <input matInput formControlName="communityName" />
-                            </mat-form-field>
-                        </div>
-                        <div class="col-md-12">
-                            <mat-form-field appearance="outline" class="example-full-width">
-                                <mat-label>Community alias</mat-label>
-                                <input matInput formControlName="communityAlias" />
-                            </mat-form-field>
-                        </div>
-                        <div class="col-md-12">
-                            <mat-form-field appearance="outline" class="example-full-width">
-                                <mat-label>Community short name</mat-label>
-                                <input matInput formControlName="communityShortName" />
-                            </mat-form-field>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <mat-form-field appearance="outline" class="example-full-width">
-                                <mat-label>Tagline</mat-label>
-                                <input matInput formControlName="communityTagLine" />
-                            </mat-form-field>
-                        </div>
-                        <div class="col-md-12">
-                            <mat-form-field appearance="outline" class="example-full-width">
-                                <mat-label>Description Long</mat-label>
-                                <input matInput formControlName="communityDescriptionShort" />
-                            </mat-form-field>
-                        </div>
-                        <div class="col-md-12">
-                            <mat-form-field appearance="outline" class="example-full-width">
-                                <mat-label>Description short</mat-label>
-                                <input matInput formControlName="communityDescriptionLong" />
-                            </mat-form-field>
-                        </div>
-                    </div>
-                </div>
-             <!-- end community details -->
-                <div class="row">
-                    <div class="col-md-12">
-                        <button class="floatLeft" mat-raised-button color="primary" matStepperPrevious>Previous</button>
-                        <button class="floatRight" mat-raised-button color="primary" matStepperNext>Next</button>
-                    </div>
-                </div>
-             </mat-step>
-        <mat-step [stepControl]="ThirdFormGroup">
-            <ng-template matStepLabel>Description</ng-template>
-            <div class="row">
-                <div class="col-md-12">
-                        <mat-form-field appearance="outline" class="example-full-width">
-                                <mat-label>Content</mat-label>
-                                <textarea matInput placeholder="Contents" formControlName="content"></textarea>
-                            </mat-form-field>
-                </div>
-            </div>
-            <div class="row">
-                    <div class="col-md-12">
-                            <button class="floatLeft" mat-raised-button color="primary" matStepperPrevious>Previous</button>
-                            <button class="floatRight" mat-raised-button color="primary" matStepperNext>Next</button>
-                    </div>
-                </div>
-           
-            
-        </mat-step>
-        <mat-step [stepControl]="FourFormGroup">
-            <ng-template matStepLabel>Upload</ng-template>
-            <div formGroupName="upload">
-            <div class="row">
-                <div class="col-md-12">
-                    <mat-label>Logo Upload</mat-label>
-                    <input type="file" formControlName="logoUpload" />
-                </div>
-            </div>
-            <div class="row">
-                    <div class="col-md-12">
-                        Video upload : 
-                          <button mat-raised-button color="primary" (click)="onClick($event)">   
-                                <mat-icon>add</mat-icon> Choose
-                          </button>
-                        <input #fileUpload type="file"  multiple class="input_fileupload--hidden" (input)="onInput($event)" formControlName="videoUpload" 
-                        [(ngModel)]="inputFileName" [accept]="accept"(change)="onVideoChange($event)">
-
-                        <div *ngFor="let f of files">
-                                <span>{{f.name}}</span>
-                                <button mat-icon-button
-                                        color="primary"
-                                        [attr.title]="deleteButtonLabel?deleteButtonLabel:null"
-                                        (click)="removeFile(event,f)"
-                                >
-                                  <mat-icon>{{deleteButtonIcon}}</mat-icon>
-                                </button>
-                              </div>
-                              
-                        </div>
-                </div>
-                <div class="row">
-                        <div class="col-md-12">
-                            <mat-form-field>
-                                <mat-label>Video Schedular</mat-label>
-                                <mat-select formControlName="videoSchedular">
-                                    <mat-option value="youtube">Youtube</mat-option>
-                                    <mat-option value="vimeo">Vimeo</mat-option>
-                                  </mat-select>
-                                  </mat-form-field>
-                        </div>
-                    </div>
-                    <div class="row">
+                 <!-- end product details -->
+                 <!-- for company details -->
+                 <div formGroupName="company" *ngIf="type == 'company'">
+                        <div class="row">
                             <div class="col-md-12">
-                                <button class="floatLeft" mat-raised-button color="primary" matStepperPrevious>Previous</button>
-                                <button class="floatRight" mat-raised-button color="primary" matStepperNext>Next</button>
+                                <mat-form-field appearance="outline" class="example-full-width">
+                                    <mat-label>Company name</mat-label>
+                                    <input matInput formControlName="companyName" />
+                                </mat-form-field>
+                            </div>
+                            <div class="col-md-12">
+                                <mat-form-field appearance="outline" class="example-full-width">
+                                    <mat-label>Company alias</mat-label>
+                                    <input matInput formControlName="companyAlias" />
+                                </mat-form-field>
+                            </div>
+                            <div class="col-md-12">
+                                <mat-form-field appearance="outline" class="example-full-width">
+                                    <mat-label>Company short name</mat-label>
+                                    <input matInput formControlName="companyShortName" />
+                                </mat-form-field>
                             </div>
                         </div>
-            </div>
-        </mat-step>
-        <mat-step [stepControl]="FiveFormGroup">
-            <ng-template matStepLabel>Subcription</ng-template>
-            <div formGroupName="subscription">
-                <div class="row">
-                    <div class="col-md-12">
-                            <mat-form-field class="example-full-width"  appearance="outline" >
-                                    <mat-label>Subcription List</mat-label>
-                                    <mat-select formControlName="subscriptionList">
-                                        <mat-option value="basic">Basic</mat-option>
-                                        <mat-option value="gold">Gold</mat-option>
-                                        <mat-option value="platinum">Platinum</mat-option>
-                                    </mat-select>
-                                    </mat-form-field>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-md-12">
-                        <mat-form-field class="example-full-width"  appearance="outline" >
-                            <mat-label>Transaction id</mat-label>
-                            <input matInput formControlName="transactionId">
-                            </mat-form-field>
-                    </div>
-                </div>
-                <div class="row">
-                        <div class="col-md-12">
-                                <mat-form-field class="example-full-width"  appearance="outline" >
-                                        <mat-label>Transaction Date</mat-label>
-                                        <input matInput formControlName="trasactionDate">
-                                        </mat-form-field>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <mat-form-field appearance="outline" class="example-full-width">
+                                    <mat-label>Tagline</mat-label>
+                                    <input matInput formControlName="companyTagLine" />
+                                </mat-form-field>
+                            </div>
+                            <div class="col-md-12">
+                                <mat-form-field appearance="outline" class="example-full-width">
+                                    <mat-label>Description Long</mat-label>
+                                    <input matInput formControlName="companyDescriptionShort" />
+                                </mat-form-field>
+                            </div>
+                            <div class="col-md-12">
+                                <mat-form-field appearance="outline" class="example-full-width">
+                                    <mat-label>Description short</mat-label>
+                                    <input matInput formControlName="companyDescriptionLong" />
+                                </mat-form-field>
+                            </div>
                         </div>
                     </div>
-                    <div class="row">
+                 <!-- end company details -->
+                 <!-- for community details -->
+                 <div formGroupName="community" *ngIf="type == 'community'">
+                        <div class="row">
                             <div class="col-md-12">
-                                <mat-form-field class="example-full-width"  appearance="outline" >
-                                    <mat-label>Notification Frequency</mat-label>
-                                    <input matInput formControlName="notification">
-                                    </mat-form-field>
+                                <mat-form-field appearance="outline" class="example-full-width">
+                                    <mat-label>Community name</mat-label>
+                                    <input matInput formControlName="communityName" />
+                                </mat-form-field>
+                            </div>
+                            <div class="col-md-12">
+                                <mat-form-field appearance="outline" class="example-full-width">
+                                    <mat-label>Community alias</mat-label>
+                                    <input matInput formControlName="communityAlias" />
+                                </mat-form-field>
+                            </div>
+                            <div class="col-md-12">
+                                <mat-form-field appearance="outline" class="example-full-width">
+                                    <mat-label>Community short name</mat-label>
+                                    <input matInput formControlName="communityShortName" />
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <mat-form-field appearance="outline" class="example-full-width">
+                                    <mat-label>Tagline</mat-label>
+                                    <input matInput formControlName="communityTagLine" />
+                                </mat-form-field>
+                            </div>
+                            <div class="col-md-12">
+                                <mat-form-field appearance="outline" class="example-full-width">
+                                    <mat-label>Description Long</mat-label>
+                                    <input matInput formControlName="communityDescriptionShort" />
+                                </mat-form-field>
+                            </div>
+                            <div class="col-md-12">
+                                <mat-form-field appearance="outline" class="example-full-width">
+                                    <mat-label>Description short</mat-label>
+                                    <input matInput formControlName="communityDescriptionLong" />
+                                </mat-form-field>
                             </div>
                         </div>
                         <div class="row">
                                 <div class="col-md-12">
                                     <button class="floatLeft" mat-raised-button color="primary" matStepperPrevious>Previous</button>
-                                    <button class="floatRight" mat-raised-button color="primary" (click)="registrationSubmit(productForm);">Save</button>
+                                    <button class="floatRight" mat-raised-button color="primary"  matStepperNext (click)="typeCall();">Next</button>
                                 </div>
                             </div>
-            </div>
-        </mat-step>
-        </mat-horizontal-stepper>
-</form>
+                    </div>
+                 <!-- end community details -->
+                    <div class="row">
+                        <div class="col-md-12">
+                               <button class="floatLeft" mat-raised-button color="primary" matStepperPrevious>Previous</button>
+                            <button class="floatRight" mat-raised-button color="primary" matStepperNext (click)="typeCall();">Next</button>
+                        </div>
+                    </div>
+                </form>
+                 </mat-step>
+            <mat-step [stepControl]="ThirdFormGroup" >
+                <ng-template matStepLabel>Description</ng-template>
+                <form [formGroup]="contentForm">
+                <div class="row">
+                    <div class="col-md-12">
+                            <mat-form-field appearance="outline" class="example-full-width">
+                                    <mat-label>Content</mat-label>
+                                    <textarea matInput placeholder="Contents" formControlName="content"></textarea>
+                                </mat-form-field>
+                    </div>
+                </div>
+                <div class="row">
+                        <div class="col-md-12">
+                                <button class="floatLeft" mat-raised-button color="primary" matStepperPrevious>Previous</button>
+                                <button class="floatRight" mat-raised-button color="primary" matStepperNext>Next</button>
+                        </div>
+                    </div>
+               
+                </form>
+            </mat-step>
+            <mat-step [stepControl]="FourFormGroup" >
+                <ng-template matStepLabel>Upload</ng-template>
+                <form [formGroup]="uploadForm">
+                <div class="row" *ngIf="!isDisable">
+                    <div class="col-md-12">
+                        <mat-label>Logo Upload</mat-label>
+                        <input type="file" formControlName="logoUpload" />
+                    </div>
+                </div>
+                <div class="row" *ngIf="!isDisable">
+                        <div class="col-md-12">
+                            Video upload : 
+                              <button mat-raised-button color="primary" (click)="onClick($event)">   
+                                    <mat-icon>add</mat-icon> Choose
+                              </button>
+                            <input #fileUpload type="file"  multiple class="input_fileupload--hidden" (input)="onInput($event)" formControlName="videoUpload" 
+                            [(ngModel)]="inputFileName" [accept]="accept"(change)="onVideoChange($event)">
+    
+                            <div *ngFor="let f of files">
+                                    <span>{{f.name}}</span>
+                                    <button mat-icon-button
+                                            color="primary"
+                                            [attr.title]="deleteButtonLabel?deleteButtonLabel:null"
+                                            (click)="removeFile(event,f)"
+                                    >
+                                      <mat-icon>{{deleteButtonIcon}}</mat-icon>
+                                    </button>
+                                  </div>
+                                  
+                            </div>
+                    </div>
+                    <div class="row" *ngIf="!isDisable">
+                            <div class="col-md-12">
+                                <mat-form-field>
+                                    <mat-label>Video Schedular</mat-label>
+                                    <mat-select formControlName="videoSchedular">
+                                        <mat-option value="youtube">Youtube</mat-option>
+                                        <mat-option value="vimeo">Vimeo</mat-option>
+                                      </mat-select>
+                                      </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="colmd-12">
+                                <p> Need to be implemented </p>
+                            </div>
+                        </div>
+                        <div class="row">
+                                <div class="col-md-12">
+                                    <button class="floatLeft" mat-raised-button color="primary" matStepperPrevious>Previous</button>
+                                    <button class="floatRight" mat-raised-button color="primary" matStepperNext>Next</button>
+                                </div>
+                            </div>
+                </form>
+            </mat-step>
+            <mat-step [stepControl]="FiveFormGroup">
+                <ng-template matStepLabel>Subcription</ng-template>
+                <form [formGroup]="subscriptionForm">
+                    <div class="row">
+                        <div class="col-md-12">
+                                <mat-form-field class="example-full-width"  appearance="outline" >
+                                        <mat-label>Subcription List</mat-label>
+                                        <mat-select formControlName="subscriptionList">
+                                            <mat-option value="basic">Basic</mat-option>
+                                            <mat-option value="gold">Gold</mat-option>
+                                            <mat-option value="platinum">Platinum</mat-option>
+                                        </mat-select>
+                                        </mat-form-field>
+                        </div>
+                    </div>
+    
+                    <div class="row">
+                        <div class="col-md-12">
+                            <mat-form-field class="example-full-width"  appearance="outline" >
+                                <mat-label>Transaction id</mat-label>
+                                <input matInput formControlName="transactionId">
+                                </mat-form-field>
+                        </div>
+                    </div>
+                    <div class="row">
+                            <div class="col-md-12">
+                                    <mat-form-field class="example-full-width"  appearance="outline" >
+                                            <mat-label>Transaction Date</mat-label>
+                                            <input matInput formControlName="trasactionDate">
+                                            </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="row">
+                                <div class="col-md-12">
+                                    <mat-form-field class="example-full-width"  appearance="outline" >
+                                        <mat-label>Notification Frequency</mat-label>
+                                        <input matInput formControlName="notification">
+                                        </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="row">
+                                    <div class="col-md-12">
+                                        <button class="floatLeft" mat-raised-button color="primary" matStepperPrevious>Previous</button>
+                                        <button class="floatRight" mat-raised-button color="primary" (click)="registrationSubmit(productForm);">Save</button>
+                                    </div>
+                                </div>
+                </form>
+            </mat-step>
+            </mat-horizontal-stepper>
+    
